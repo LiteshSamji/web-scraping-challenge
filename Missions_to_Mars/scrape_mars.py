@@ -2,16 +2,23 @@
 from splinter import Browser
 from bs4 import BeautifulSoup
 import pandas as pd
+import time
 from webdriver_manager.chrome import ChromeDriverManager
  
+
+
+
+
 
 def scrape():
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
-    
+
     # URL of page to be scraped
     url = 'https://redplanetscience.com/'
     browser.visit(url)
+
+    time.sleep(1)
 
     #using bs to write it into html
     html = browser.html
@@ -93,10 +100,10 @@ def scrape():
         
         # Navigate Backwards
         browser.back()
-    hemisphere_image_urls
+        hemisphere_image_urls
 
     #Create dictionary for all the information scraped from the sources
-    mars_dict={
+    mars_dict = {
         "news_title":news_title,
         "news_p":news_p,
         "featured_image_url":featured_image_url,
